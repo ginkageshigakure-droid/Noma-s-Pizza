@@ -242,3 +242,64 @@ body.landing {
     grid-template-columns: 1fr;
   }
 }
+.admin-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+}
+
+.admin-container {
+  background: rgba(15, 23, 42, 0.9);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  width: 480px;
+  color: var(--text);
+}
+
+.admin-sub {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.admin-login input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.admin-error {
+  color: var(--danger);
+  margin-top: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.admin-panel h2 {
+  margin-bottom: 1rem;
+}
+
+.admin-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.admin-item label {
+  display: block;
+  margin: 0.4rem 0;
+}
+
+.admin-item input {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: none;
+}
