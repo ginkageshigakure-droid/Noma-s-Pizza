@@ -67,3 +67,70 @@ if (checkoutBtn) {
     updateUI();
   });
 }
+// ----------------------
+// ADMIN PANEL
+// ----------------------
+
+const ADMIN_SECRET = "noma123"; // jouw geheime code
+
+const adminLogin = document.getElementById("admin-login");
+const adminPanel = document.getElementById("admin-panel");
+const adminEnter = document.getElementById("admin-enter");
+const adminCode = document.getElementById("admin-code");
+const adminError = document.getElementById("admin-error");
+const pizzaEditor = document.getElementById("pizza-editor");
+const saveAdmin = document.getElementById("save-admin");
+
+// Pizza data (kan worden aangepast)
+let pizzaData = [
+  { name: "Shoarma", price: 5, desc: "Rijke shoarma, knoflooksaus, rode ui." },
+  { name: "Margherita", price: 5, desc: "Tomatensaus, mozzarella, basilicum." },
+  { name: "Tonijn", price: 5, desc: "Tonijn, rode ui, olijven." }
+];
+
+// Admin login
+if (adminEnter) {
+  adminEnter.addEventListener("click", () => {
+    if (adminCode.value === ADMIN_SECRET) {
+      adminLogin.classList.add("hidden");
+      adminPanel.classList.remove("hidden");
+      loadEditor();
+    } else {
+      adminError.textContent = "Foute code";
+    }
+  });
+}
+
+// Editor laden
+function loadEditor() {
+  pizzaEditor.innerHTML = "";
+
+  pizzaData.forEach((pizza, index) => {
+    const div = document.createElement("div");
+    div.className = "admin-item";
+
+    div.innerHTML = `
+      <h3>${pizza.name}</h3>
+      <label>Naam: <input type="text" value="${pizza.name}" data-field="name" data-index="${index}"></label>
+      <label>Prijs: <input type="number" value="${pizza.price}" data-field="price" data-index="${index}"></label>
+      <label>Beschrijving: <input type="text" value="${pizza.desc}" data-field="desc" data-index="${index}"></label>
+    `;
+
+    pizzaEditor.appendChild(div);
+  });
+}
+
+// Opslaan
+if (saveAdmin) {
+  saveAdmin.addEventListener("click", () => {
+    const inputs = pizzaEditor.querySelectorAll("input");
+
+    inputs.forEach(input => {
+      const index = input.dataset.index;
+      const field = input.dataset.field;
+      pizzaData[index][field] = input.value;
+    });
+
+    alert("Pizza’s succesvol bijgewerkt!");
+  });
+}
