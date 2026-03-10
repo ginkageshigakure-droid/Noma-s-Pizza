@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Noma's Pizza - Admin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Admin Login</h1>
+<body class="admin-body">
 
-    <input id="user" placeholder="Gebruikersnaam">
-    <input id="pass" type="password" placeholder="Wachtwoord">
-    <button class="btn" onclick="login()">Inloggen</button>
+  <div class="admin-container">
+    <h1>Admin Paneel</h1>
+    <p class="admin-sub">Beheer pizza’s en prijzen</p>
 
-    <p id="msg"></p>
+    <div class="admin-login" id="admin-login">
+      <input type="password" id="admin-code" placeholder="Geheime admin code">
+      <button id="admin-enter" class="btn-primary">Inloggen</button>
+      <p id="admin-error" class="admin-error"></p>
+    </div>
 
-    <script>
-        function login() {
-            const u = document.getElementById("user").value;
-            const p = document.getElementById("pass").value;
+    <div id="admin-panel" class="admin-panel hidden">
+      <h2>Pizza’s aanpassen</h2>
 
-            // EXTREEM STERK WACHTWOORD
-            const superWachtwoord = "X9!pA7#qT2vL@8rZ$wF4mN%kH6sB*3dJ0yR";
+      <div id="pizza-editor"></div>
 
-            if (u === "admin" && p === superWachtwoord) {
-                window.location.href = "dashboard.html";
-            } else {
-                document.getElementById("msg").textContent = "Fout wachtwoord";
-            }
-        }
-    </script>
+      <button id="save-admin" class="btn-primary">Opslaan</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
